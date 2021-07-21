@@ -12,7 +12,9 @@
     <div class="nav nav-primary">
       <div class="nav-brand">Color Flipper</div>
       <div class="nav-menu">
-        <div class="nav-item">Check out my Github</div>
+        <div class="nav-item">
+          <a href="#" id="setting-link">Settings</a>
+        </div>
       </div>
     </div>
 
@@ -23,6 +25,24 @@
       </div>
       <span id="guide">Click anywhere to change the color.</span>
     </div>
+
+    <div id="setting">
+      <div class="setting-name">Settings</div>
+      <hr />
+
+      <div class="setting-name">Colors Management:</div>
+      <select
+        id="colors-select"
+        name="colors-select"
+        multiple
+        onChange="colorOnChange(this);"
+      ></select>
+      <div class="colors-action-group">
+        <button id="delete-btn">Delete</button>
+      </div>
+    </div>
+
+    <div id="backdrop"></div>
 
     <!-- JS -->
     <script src="assets/js/flipper.js"></script>
