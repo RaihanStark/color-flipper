@@ -104,3 +104,26 @@ body {
 .colors-action-group {
   margin-top: 1rem;
 }
+
+.setting-panel {
+  display: flex;
+  column-gap: 0.5rem;
+
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.setting-action {
+  padding: 0.5rem;
+  display: flex;
+  border-radius: 10px;
+  background-color: white;
+
+  opacity: 0.2;
+  transition: all 200ms;
+}
+
+.setting-action:hover {
+  opacity: 1;
+}
