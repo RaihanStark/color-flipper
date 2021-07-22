@@ -7,6 +7,7 @@ let selectedColor = undefined;
 // DOM
 const content_html = document.getElementById("content");
 const color_name_html = document.getElementById("color-hex");
+const color_btn_html = document.getElementById("color-management-btn");
 
 document.body.onkeyup = function (e) {
   if (e.keyCode == 32) {
@@ -18,8 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
   changeColor(content_html, color_name_html);
 });
 
-content_html.addEventListener("click", function () {
-  changeColor(this, color_name_html);
+// content_html.addEventListener("click", function () {
+//   changeColor(this, color_name_html);
+// });
+
+color_btn_html.addEventListener("click", function () {
+  $("#colorModal").modal("show");
 });
 
 function changeColor(background_html, display_html) {
