@@ -35,7 +35,7 @@ body {
   text-decoration: underline;
 }
 
-.container {
+.content-container {
   padding: 0 1rem;
   height: 100%;
 
@@ -108,10 +108,6 @@ body {
 .setting-panel {
   display: flex;
   column-gap: 0.5rem;
-
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
 }
 
 .setting-action {
@@ -126,4 +122,16 @@ body {
 
 .setting-action:hover {
   opacity: 1;
+}
+
+.setting-container {
+  position: fixed;
+  display: flex;
+  top: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.setting-container span {
+  font-size: 1rem;
 }
