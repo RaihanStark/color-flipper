@@ -64,47 +64,6 @@ body {
   font-size: 1rem;
 }
 
-#setting {
-  position: absolute;
-  background-color: white;
-  top: 0;
-  height: 100%;
-  width: 300px;
-  transition: all 200ms;
-  left: -100vw;
-
-  z-index: 3;
-
-  padding: 0 1rem;
-}
-
-#backdrop {
-  z-index: 2;
-  display: none;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  background-color: black;
-  opacity: 0.5;
-
-  cursor: pointer;
-}
-
-.setting-name {
-  margin-top: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-#colors-select {
-  width: 100%;
-  height: 190px;
-}
-
-.colors-action-group {
-  margin-top: 1rem;
-}
-
 .setting-panel {
   display: flex;
   column-gap: 0.5rem;
