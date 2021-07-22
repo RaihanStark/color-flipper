@@ -8,6 +8,12 @@ let selectedColor = undefined;
 const content_html = document.getElementById("content");
 const color_name_html = document.getElementById("color-hex");
 
+document.body.onkeyup = function (e) {
+  if (e.keyCode == 32) {
+    changeColor(content_html, color_name_html);
+  }
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   changeColor(content_html, color_name_html);
 });
