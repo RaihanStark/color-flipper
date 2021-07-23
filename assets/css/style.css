@@ -191,6 +191,18 @@ body {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+.color-preview-container {
+  display: flex;
+  align-items: center;
+}
+.color-preview {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   .display-color {
