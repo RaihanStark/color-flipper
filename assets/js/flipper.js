@@ -22,10 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
   changeColor(content_html, color_name_html);
 
   colors.forEach(function (color, i) {
-    appendColorsToManagement(colors_select_html, { value: color, index: i });
+    renderColorsToManagement(colors_select_html, color);
   });
 
-  $(".btn-delete").on("click", function (e) {
+  $(document).on("click", ".btn-add", function (e) {
+    const typedColors = $("#color-add").val();
+
+    renderColorsToManagement(colors_select_html, typedColors);
+
+    colors.push(typedColors);
+  });
+
+  $(document).on("click", ".btn-delete", function (e) {
     const clicked_value = $(this).parent().attr("data-value");
     deleteColorByValue(clicked_value);
     $(this).parent().remove();
@@ -47,18 +55,18 @@ function changeColor(background_html, display_html) {
   display_html.innerHTML = chosen_color;
 }
 
-function appendColorsToManagement(colors_select_html, color) {
+function renderColorsToManagement(colors_select_html, color) {
   let div = document.createElement("div");
   div.className = "color-item";
-  div.setAttribute("data-value", color.value);
+  div.setAttribute("data-value", color);
   div.innerHTML = `
     
     <div class="color-preview-container">
-      <div class="color-preview" style="background-color:${color.value};"></div>
-      ${color.value}
+      <div class="color-preview" style="background-color:${color};"></div>
+      ${color}
     </div>
 
-    <span class="btn-delete"
+    <span class="btn-action btn-delete"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 448 512"
