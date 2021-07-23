@@ -10,6 +10,7 @@ const color_name_html = document.getElementById("color-hex");
 const color_btn_html = document.getElementById("color-management-btn");
 const colors_select_html = document.getElementById("color-list");
 const color_delete_btn_html = document.querySelectorAll(".btn-delete");
+const guide_btn_html = document.getElementById("guide");
 
 document.body.onkeyup = function (e) {
   if (e.keyCode == 32) {
@@ -26,15 +27,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   $(".btn-delete").on("click", function (e) {
     const clicked_value = $(this).parent().attr("data-value");
-    console.log(typeof clicked_value);
     deleteColorByValue(clicked_value);
-    console.log(colors);
     $(this).parent().remove();
   });
 });
 
 color_btn_html.addEventListener("click", function () {
   $("#colorModal").modal("show");
+});
+
+guide_btn_html.addEventListener("click", function () {
+  changeColor(content_html, color_name_html);
 });
 
 function changeColor(background_html, display_html) {

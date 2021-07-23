@@ -62,8 +62,8 @@
       <div class="display-color">
         Background Color: <span id="color-hex"></span>
       </div>
-      <span id="guide"
-        >Click anywhere or Press [SPACEBAR] to change the color.</span
+      <span class="noselect" id="guide"
+        >Click here or Press [SPACEBAR] to change the color.</span
       >
     </div>
     <!-- Modal -->
@@ -89,6 +89,15 @@
           </div>
           <div class="modal-body">
             <div class="color-list" id="color-list">
+              <div class="color-item color-item-add">
+                <input
+                  class="form-control"
+                  type="text"
+                  name=""
+                  id="color-add"
+                  placeholder="Add new HEX Color..."
+                />
+              </div>
               <!-- <div class="color-item">
                 #AAABBB
                 <span class="btn-delete"
