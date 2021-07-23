@@ -1,8 +1,10 @@
-let colors = ["#272727", "#fed766", "#009fb7", "#696773", "#eff1f3"];
-
 // STATE
 let isSidebarOpen = false;
 let selectedColor = undefined;
+let web_storage_supported = undefined;
+checkWebStorageSupport();
+
+let colors = getColorsFromLocalStorage();
 
 // DOM
 const content_html = document.getElementById("content");
@@ -97,6 +99,7 @@ function deleteColorByValue(color) {
 
 function addNewColor(color) {
   colors.push(color);
+  saveColorsToLocalStorage(colors);
 }
 
 function addAndRenderColorHandler() {
@@ -121,4 +124,38 @@ function onSpaceBarHandler(selector, callback) {
       callback();
     }
   });
+}
+
+function saveColorsToLocalStorage(colors) {
+  localStorage.setItem("colors_list", colors);
+  return colors;
+}
+
+function getColorsFromLocalStorage() {
+  try {
+    return localStorage.getItem("colors_list").split(",");
+  } catch (err) {
+    const default_colors = [
+      "#272727",
+      "#fed766",
+      "#009fb7",
+      "#696773",
+      "#eff1f3",
+    ];
+
+    return saveColorsToLocalStorage(default_colors);
+  }
+}
+
+function checkWebStorageSupport() {
+  if (typeof Storage !== "undefined") {
+    // Code for localStorage/sessionStorage.
+    web_storage_supported = true;
+  } else {
+    // Sorry! No Web Storage support..
+    web_storage_supported = false;
+    alert(
+      "Your Browser Doesn't Support Web Storage: Colors will be reset everytime"
+    );
+  }
 }
