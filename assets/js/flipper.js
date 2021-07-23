@@ -7,51 +7,54 @@ let selectedColor = undefined;
 // DOM
 const content_html = document.getElementById("content");
 const color_name_html = document.getElementById("color-hex");
-const color_btn_html = document.getElementById("color-management-btn");
 const colors_select_html = document.getElementById("color-list");
 const color_delete_btn_html = document.querySelectorAll(".btn-delete");
-const guide_btn_html = document.getElementById("guide");
 
-document.body.onkeyup = function (e) {
-  if (e.keyCode == 32) {
-    changeColor(content_html, color_name_html);
-  }
-};
-
-document.addEventListener("DOMContentLoaded", function () {
+$(document).ready(function () {
+  // -- Init App --
+  // Display Color
   changeColor(content_html, color_name_html);
 
+  // Load and Render Colors to Management
   colors.forEach(function (color, i) {
     renderColorsToManagement(colors_select_html, color);
   });
 
-  // Add New Color
+  // -- Handler --
+  // Add New Color - Button
   $(document).on("click", ".btn-add", function (e) {
     addAndRenderColorHandler();
   });
 
-  $("#color-add").on("keyup", function (e) {
-    if (e.key === "Enter" || e.keyCode === 13) {
-      addAndRenderColorHandler();
+  // Add New Color - Enter
+  onEnterHandler("#color-add", function () {
+    addAndRenderColorHandler();
 
-      // Clear Input
-      $("#color-add").val("");
-    }
+    // Clear Input
+    $("#color-add").val("");
   });
 
+  // Delete Color - Button
   $(document).on("click", ".btn-delete", function (e) {
     const clicked_value = $(this).parent().attr("data-value");
     deleteColorByValue(clicked_value);
     $(this).parent().remove();
   });
-});
 
-color_btn_html.addEventListener("click", function () {
-  $("#colorModal").modal("show");
-});
+  // Change Color - Button
+  $("#guide").on("click", function () {
+    changeColor(content_html, color_name_html);
+  });
 
-guide_btn_html.addEventListener("click", function () {
-  changeColor(content_html, color_name_html);
+  // Change Color - SpaceBar
+  onSpaceBarHandler("body", function () {
+    changeColor(content_html, color_name_html);
+  });
+
+  // Open Color Management - Button
+  $("#color-management-btn").on("click", function () {
+    $("#colorModal").modal("show");
+  });
 });
 
 function changeColor(background_html, display_html) {
@@ -102,4 +105,20 @@ function addAndRenderColorHandler() {
     addNewColor(typedColors);
     renderColorsToManagement(colors_select_html, typedColors);
   }
+}
+
+function onEnterHandler(selector, callback) {
+  $(selector).on("keyup", function (e) {
+    if (e.key === "Enter" || e.keyCode === 13) {
+      callback();
+    }
+  });
+}
+
+function onSpaceBarHandler(selector, callback) {
+  $(selector).on("keyup", function (e) {
+    if (e.key === " " || e.keyCode === 32 || e.key === "Spacebar") {
+      callback();
+    }
+  });
 }
