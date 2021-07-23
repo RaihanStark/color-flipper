@@ -170,6 +170,7 @@ body {
   background: none;
   border: none;
   color: white;
+  padding: 0;
 }
 
 #color-add::placeholder {
