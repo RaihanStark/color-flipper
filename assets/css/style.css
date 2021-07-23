@@ -117,17 +117,19 @@ body {
   -webkit-box-shadow: 2px 2px 11px -7px rgb(0 0 0 / 75%);
   -moz-box-shadow: 2px 2px 11px -7px rgb(0 0 0 / 75%);
 
-  cursor: pointer;
+  /* cursor: pointer; */
   transition: all 300ms;
 }
 
-.color-item:hover {
+/* .color-item:hover {
   transform: translateY(3px);
-}
+} */
 
 .btn-delete {
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
+
+  cursor: pointer;
 }
 
 .btn-delete:hover {
