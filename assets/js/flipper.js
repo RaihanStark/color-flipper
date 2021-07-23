@@ -25,12 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
     renderColorsToManagement(colors_select_html, color);
   });
 
+  // Add New Color
   $(document).on("click", ".btn-add", function (e) {
-    const typedColors = $("#color-add").val();
+    addAndRenderColorHandler();
+  });
 
-    renderColorsToManagement(colors_select_html, typedColors);
+  $("#color-add").on("keyup", function (e) {
+    if (e.key === "Enter" || e.keyCode === 13) {
+      addAndRenderColorHandler();
 
-    colors.push(typedColors);
+      // Clear Input
+      $("#color-add").val("");
+    }
   });
 
   $(document).on("click", ".btn-delete", function (e) {
@@ -84,4 +90,16 @@ function renderColorsToManagement(colors_select_html, color) {
 function deleteColorByValue(color) {
   var index = colors.indexOf(color);
   colors.splice(index, 1);
+}
+
+function addNewColor(color) {
+  colors.push(color);
+}
+
+function addAndRenderColorHandler() {
+  const typedColors = $("#color-add").val();
+  if (typedColors) {
+    addNewColor(typedColors);
+    renderColorsToManagement(colors_select_html, typedColors);
+  }
 }
