@@ -62,6 +62,30 @@ $(document).ready(function () {
   });
 });
 
+function checkColorValidation(color) {
+  $("#color-validation").css("backgroundColor", color);
+  const bgcolor = $("#color-validation").css("backgroundColor");
+  const error_placeholder = ["rgba(0, 0, 0, 0)", "rgb(0, 0, 0)"];
+  console.log(bgcolor, error_placeholder.indexOf(bgcolor) != -1);
+
+  // FIXME: Kesalahan Logika
+  // Karena kita menggunakan warna hitam sebagai placeholder
+  // jadi ketika kita check color warna hitam
+  // program bingung membedakan mana placeholder mana warna yang ingin di cek
+  var color_valid = false;
+  if (error_placeholder.indexOf(bgcolor) != -1) {
+    console.log("Color is Invalid");
+    color_valid = false;
+  }
+
+  color_valid = true;
+
+  // Reset to white
+  $("#color-validation").css("backgroundColor", "rgb(0, 0, 0)");
+
+  return color_valid;
+}
+
 function changeColor(background_html, display_html) {
   const chosen_color = colors[Math.floor(Math.random() * colors.length)];
 
