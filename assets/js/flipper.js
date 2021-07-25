@@ -26,6 +26,9 @@ $(document).ready(function () {
   // Add New Color - Button
   $(document).on("click", ".btn-add", function (e) {
     addAndRenderColorHandler();
+
+    // Clear Input
+    $("#color-add").val("");
   });
 
   // Add New Color - Enter
